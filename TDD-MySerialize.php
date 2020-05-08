@@ -33,20 +33,38 @@ class TDD_MySerialize extends TestCase
 
 
 
-    public function test
+    //Expected value for integer serialization:
+    // '14' -> "i:14;"
+    // '80' -> "i:80;"
+    public function testCanSerializeInteger()
+    {
+        $this->assertSame("i:14;", serializeInteger(14));
+    }
 
 
-    //Tests if mySerialization acts like PHO serialize function.
+
+    //Expected value for double serialization:
+    // '30.98' -> "d:30.98;"
+    public function testCanSerializeDouble()
+    {
+        $this->assertSame("d:30.98;",serializeDouble(30.98));
+    }
+
+
+
+    //Tests if mySerialization acts like PHP serialize function.
     public function testMySerialize()
     {
         //$this->assertSame(mySerialize(null), serialize(null));
         $this->assertSame(
-            '1-1-1',
+            '1-1-1-1-1',
             implode ('-',
             [
                 (mySerialize(null) === serialize(null)),
                 (mySerialize(true) === serialize(true)),
-                (mySerialize(false) === serialize(false))
+                (mySerialize(false) === serialize(false)),
+                (mySerialize(14) === serialize(14)),
+                (mySerialize(15.68) === serialize(15.68))
             ])
         );
     }
