@@ -9,6 +9,11 @@ class TDD_MySerialize extends TestCase
 
     public function testCanSerializeNull()
     {
-        $this->assertSame("N;",serializeNull(null));
+        $this->assertSame("N;",serializeNull());
+    }
+
+    public function testMySerializeLike()
+    {
+        $this->assertSame(mySerialize(null), serialize(null));
     }
 }
