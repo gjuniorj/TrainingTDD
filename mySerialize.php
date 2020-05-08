@@ -34,6 +34,14 @@ function serializeDouble($data)
 }
 
 
+function serializeString($data)
+{
+    if ( is_string($data) )
+        return "s:" . strlen($data) . ":\"" . $data . "\";";
+    else
+        throw new Exception('ERROR - serializeString - Data is not a string.');
+}
+
 
 function mySerialize($data)
 {
@@ -48,5 +56,9 @@ function mySerialize($data)
 
     if ( is_double($data) )
         return serializeDouble($data);
+
+    if ( is_string($data) )
+        return serializeString($data);
+
 
 }
